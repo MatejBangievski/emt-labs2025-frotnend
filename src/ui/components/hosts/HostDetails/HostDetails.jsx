@@ -4,28 +4,19 @@ import useHostDetails from "../../../../hooks/useHostDetails.js";
 import {
     Box,
     Button,
-    Card,
-    CardContent,
     Chip,
     CircularProgress,
-    Divider,
     Grid,
     Typography,
     Paper,
     Avatar,
     Stack,
-    Rating,
     Breadcrumbs,
     Link,
 } from "@mui/material";
 import {
     ArrowBack,
-    Category,
-    Factory,
-    Star,
-    ShoppingCart,
-    FavoriteBorder,
-    Share
+    Place
 } from "@mui/icons-material";
 
 const HostDetails = () => {
@@ -58,8 +49,16 @@ const HostDetails = () => {
                 <Typography color="text.primary">{host.name} {host.surname}</Typography>
             </Breadcrumbs>
 
-            <Paper elevation={2} sx={{ p: 4, borderRadius: 4 }}>
-                <Grid container spacing={4}>
+            <Paper
+                elevation={2}
+                sx={{
+                    p: 4,
+                    borderRadius: 4,
+                    maxWidth: '70%',
+                    minWidth: '70%',
+                    mx: 'auto'}}
+            >
+                <Grid container spacing={4} sx={{alignItems: 'center'}}>
                     <Grid item xs={12} md={3}>
                         <Box sx={{
                             display: 'flex',
@@ -93,25 +92,29 @@ const HostDetails = () => {
 
                             <Stack direction="row" spacing={1} sx={{ mb: 3 }}>
                                 <Chip
-                                    icon={<Star/>}
-                                    label={host.country}
+                                    icon={<Place/>}
+                                    label={country.name}
                                     color="primary"
                                     variant="outlined"
                                     sx={{ p: 2 }}
                                 />
-
                             </Stack>
-                        </Box>
-                    </Grid>
 
-                    <Grid item xs={12} display="flex" justifyContent="flex-end">
-                        <Button
-                            variant="outlined"
-                            startIcon={<ArrowBack />}
-                            onClick={() => navigate("/hosts")}
-                        >
-                            Back to Hosts
-                        </Button>
+                            <Grid item xs={12} display="flex" justifyContent="flex-start">
+                                <Button
+                                    variant="outlined"
+                                    startIcon={<ArrowBack />}
+                                    onClick={() => navigate("/hosts")}
+                                    sx={{
+                                        borderRadius: '50px',
+                                        textTransform: 'none',
+                                        px: 4, py: 1
+                                    }}
+                                >
+                                    Back to Hosts
+                                </Button>
+                            </Grid>
+                        </Box>
                     </Grid>
                 </Grid>
             </Paper>

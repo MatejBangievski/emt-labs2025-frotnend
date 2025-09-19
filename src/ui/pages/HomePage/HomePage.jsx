@@ -4,7 +4,7 @@ import {Box, Container, Typography} from "@mui/material";
 const HomePage = () => {
     return (
         <Box sx={{m:0, p:0}}>
-            <Container maxWidth="xl" sx={{mt:3, py: 3}}>
+            <Container maxWidth="xl" sx={{mt:3, py: 3, textAlign: "center"}}>
                 <Typography variant="h4" gutterBottom>
                     Welcome to the Accommodation Shop App! 👋
                 </Typography>

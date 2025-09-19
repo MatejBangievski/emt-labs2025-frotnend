@@ -9,8 +9,6 @@ const AccommodationsPage = () => {
     const {accommodations, loading, onAdd, onEdit, onDelete} = useAccommodations();
     const [addAccommodationDialogOpen, setAddAccommodationDialogOpen] = useState(false);
 
-    console.log(accommodations)
-
     return (
         <>
             <Box className="products-box">

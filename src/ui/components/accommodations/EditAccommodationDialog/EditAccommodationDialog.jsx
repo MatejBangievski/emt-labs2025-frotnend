@@ -77,7 +77,7 @@ const EditAccommodationDialog = ({open, onClose, accommodation, onEdit}) => {
                         variant="outlined">
                         {hosts.map((host) => (
                             <MenuItem key={host.id} value={host.id}>
-                                {host.name}
+                                {host.name + ' ' + host.surname}
                             </MenuItem>
                         ))}
                     </Select>

@@ -39,9 +39,9 @@ const EditCountryDialog = ({open, onClose, country, onEdit}) => {
                 />
                 <TextField
                     margin="dense"
-                    label="Country"
-                    name="country"
-                    value={formData.country}
+                    label="Continent"
+                    name="continent"
+                    value={formData.continent}
                     onChange={handleChange}
                     fullWidth
                 />

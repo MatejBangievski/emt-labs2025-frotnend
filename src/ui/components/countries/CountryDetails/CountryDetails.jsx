@@ -25,7 +25,8 @@ import {
     Star,
     ShoppingCart,
     FavoriteBorder,
-    Share
+    Share,
+    Place
 } from "@mui/icons-material";
 
 const CountryDetails = () => {
@@ -58,8 +59,16 @@ const CountryDetails = () => {
                 <Typography color="text.primary">{country.name}</Typography>
             </Breadcrumbs>
 
-            <Paper elevation={2} sx={{ p: 4, borderRadius: 4 }}>
-                <Grid container spacing={4}>
+            <Paper
+                   elevation={2}
+                   sx={{
+                       p: 4,
+                       borderRadius: 4,
+                       maxWidth: '70%',
+                       minWidth: '70%',
+                       mx: 'auto'}}
+            >
+                <Grid container spacing={4} sx={{alignItems: 'center'}}>
                     <Grid item xs={12} md={3}>
                         <Box sx={{
                             display: 'flex',
@@ -70,7 +79,7 @@ const CountryDetails = () => {
                             borderRadius: 3,
                             boxShadow: 1
                         }}>
-                            <Avatar
+                            <Place
                                 src={country.image || "/placeholder-country.jpg"}
                                 variant="rounded"
                                 sx={{
@@ -84,23 +93,32 @@ const CountryDetails = () => {
                     <Grid item xs={12} md={9}>
                         <Box sx={{ mb: 3 }}>
                             <Typography variant="h3" gutterBottom sx={{ fontWeight: 600 }}>
-                                {country.name} {country.continent}
+                                {country.name}
+                            </Typography>
+
+                            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600 }}>
+                                {country.continent}
                             </Typography>
 
                             <Typography variant="body1" sx={{ mb: 3 }}>
                                 Country details.
                             </Typography>
-                        </Box>
-                    </Grid>
 
-                    <Grid item xs={12} display="flex" justifyContent="flex-end">
-                        <Button
-                            variant="outlined"
-                            startIcon={<ArrowBack />}
-                            onClick={() => navigate("/countries")}
-                        >
-                            Back to Countries
-                        </Button>
+                            <Grid item xs={12} display="flex" justifyContent="flex-start">
+                                <Button
+                                    variant="outlined"
+                                    startIcon={<ArrowBack />}
+                                    onClick={() => navigate("/countries")}
+                                    sx={{
+                                        borderRadius: '50px',
+                                        textTransform: 'none',
+                                        px: 4, py: 1
+                                    }}
+                                >
+                                    Back to Countries
+                                </Button>
+                            </Grid>
+                        </Box>
                     </Grid>
                 </Grid>
             </Paper>

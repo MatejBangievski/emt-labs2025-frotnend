@@ -7,7 +7,8 @@ import {
     DialogTitle,
     FormControl,
     InputLabel, MenuItem, Select,
-    TextField
+    TextField,
+    CircularProgress, Box
 } from "@mui/material";
 import useCountries from "../../../../hooks/useCountries.js";
 
@@ -19,7 +20,7 @@ const initialFormData = {
 
 const AddHostDialog = ({open, onClose, onAdd}) => {
     const [formData, setFormData] = useState(initialFormData);
-    const countries = useCountries();
+    const { countries, loading } = useCountries();
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -60,11 +61,17 @@ const AddHostDialog = ({open, onClose, onAdd}) => {
                         onChange={handleChange}
                         label="Country"
                         variant="outlined">
-                        {countries.map((country) => (
-                            <MenuItem key={country.id} value={country.id}>
-                                {country.name}
-                            </MenuItem>
-                        ))}
+                        {loading ? (
+                            <Box className="progress-box">
+                                <CircularProgress/>
+                            </Box>
+                        ) : (
+                            countries.map((country) => (
+                                <MenuItem key={country.id} value={country.id}>
+                                    {country.name}
+                                </MenuItem>
+                            ))
+                        )}
                     </Select>
                 </FormControl>
             </DialogContent>

@@ -27,16 +27,22 @@ const AccommodationCard = ({accommodation, onEdit, onDelete}) => {
         <>
             <Card sx={{boxShadow: 3, borderRadius: 2, p: 1}}>
                 <CardContent>
-                    <Typography variant="h5">{accommodation.name}</Typography>
+                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>{accommodation.name}</Typography>
                     <Typography variant="subtitle2">
                         {host ? `Host: ${host.name} ${host.surname}` : "Loading host..."}
                     </Typography>
                     <Typography variant="subtitle3">Number of Rooms: {accommodation.numRooms}</Typography>
-                    <Typography variant="body1" fontWeight="bold"
-                                sx={{textAlign: "right", fontSize: "1.25rem"}}>Reserved: ${accommodation.isReserved}</Typography>
-                    <Typography variant="body2" sx={{textAlign: "right"}}>Booked: {accommodation.isBooked}</Typography>
+                    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontWeight: 600 }}>
+                        <Typography variant="h6" fontWeight="bold">
+                            Reserved: {accommodation.isReserved ? "✅" : "❌"}
+                        </Typography>
+                        <Typography variant="h6" fontWeight="bold">
+                            Booked: {accommodation.isBooked ? "✅" : "❌"}
+                        </Typography>
+                    </Box>
+
                 </CardContent>
-                <CardActions sx={{justifyContent: "space-between"}}>
+                <CardActions sx={{justifyContent: "center"}}>
                     <Button
                         size="small"
                         color="info"
@@ -50,7 +56,6 @@ const AccommodationCard = ({accommodation, onEdit, onDelete}) => {
                             size="small"
                             color="warning"
                             startIcon={<EditIcon/>}
-                            sx={{mr: "0.25rem"}}
                             onClick={() => setEditAccommodationDialogOpen(true)}
                         >
                             Edit

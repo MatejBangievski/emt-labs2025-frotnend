@@ -25,7 +25,10 @@ import {
     Star,
     ShoppingCart,
     FavoriteBorder,
-    Share
+    Share,
+    Person,
+    Bed,
+    Home
 } from "@mui/icons-material";
 
 const AccommodationDetails = () => {
@@ -58,8 +61,17 @@ const AccommodationDetails = () => {
                 <Typography color="text.primary">{accommodation.name}</Typography>
             </Breadcrumbs>
 
-            <Paper elevation={2} sx={{ p: 4, borderRadius: 4 }}>
-                <Grid container spacing={4}>
+            <Paper
+               elevation={2}
+               sx={{
+                   p: 4,
+                   borderRadius: 4,
+                   maxWidth: '70%',
+                   minWidth: '70%',
+                   mx: 'auto'
+               }}
+            >
+                <Grid container spacing={4} sx={{alignItems: 'center'}}>
                     <Grid item xs={12} md={3}>
                         <Box sx={{
                             display: 'flex',
@@ -93,37 +105,42 @@ const AccommodationDetails = () => {
 
                             <Stack direction="row" spacing={1} sx={{ mb: 3 }}>
                                 <Chip
-                                    icon={<Category />}
-                                    label={accommodation.category}
+                                    icon={<Home />}
+                                    label={accommodation.category.charAt(0).toUpperCase() + accommodation.category.slice(1).toLowerCase()}
                                     color="primary"
                                     variant="outlined"
                                     sx={{ p: 2 }}
                                 />
                                 <Chip
                                     icon={<Person />}
-                                    label={host.name}
+                                    label={host.name + ' ' + host.surname}
                                     color="secondary"
                                     variant="outlined"
                                     sx={{ p: 2 }}
                                 />
                                 <Chip
-                                    icon={<Home />}
+                                    icon={<Bed />}
                                     label={`${accommodation.numRooms} room${accommodation.numRooms === 1 ? '' : 's'}`}
                                     variant="outlined"
                                     sx={{ p: 2 }}
                                 />
                             </Stack>
-                        </Box>
-                    </Grid>
 
-                    <Grid item xs={12} display="flex" justifyContent="flex-end">
-                        <Button
-                            variant="outlined"
-                            startIcon={<ArrowBack />}
-                            onClick={() => navigate("/accommodations")}
-                        >
-                            Back to Accommodations
-                        </Button>
+                            <Grid item xs={12} display="flex" justifyContent="center">
+                                <Button
+                                    variant="outlined"
+                                    startIcon={<ArrowBack />}
+                                    onClick={() => navigate("/accommodations")}
+                                    sx={{
+                                        borderRadius: '50px',
+                                        textTransform: 'none',
+                                        px: 4, py: 1
+                                    }}
+                                >
+                                    Back to Accommodations
+                                </Button>
+                            </Grid>
+                        </Box>
                     </Grid>
                 </Grid>
             </Paper>

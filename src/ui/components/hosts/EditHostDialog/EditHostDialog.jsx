@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
-    Button,
+    Box,
+    Button, CircularProgress,
     Dialog,
     DialogActions,
     DialogContent,
@@ -17,7 +18,7 @@ const EditHostDialog = ({open, onClose, host, onEdit}) => {
         surname: host.surname,
         countryId: host.countryId
     });
-    const countries = useCountries();
+    const { countries, loading } = useCountries();
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -58,11 +59,17 @@ const EditHostDialog = ({open, onClose, host, onEdit}) => {
                         onChange={handleChange}
                         label="Country"
                         variant="outlined">
-                        {countries.map((country) => (
-                            <MenuItem key={country.id} value={country.id}>
-                                {country.name}
-                            </MenuItem>
-                        ))}
+                        {loading ? (
+                            <Box className="progress-box">
+                                <CircularProgress/>
+                            </Box>
+                        ) : (
+                            countries.map((country) => (
+                                <MenuItem key={country.id} value={country.id}>
+                                    {country.name}
+                                </MenuItem>
+                            ))
+                        )}
                     </Select>
                 </FormControl>
             </DialogContent>

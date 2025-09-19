@@ -19,7 +19,7 @@ const HostCard = ({host, onEdit, onDelete}) => {
                     <Typography variant="h5">{host.name} {host.surname}</Typography>
                     <Typography variant="subtitle2">{host.country}</Typography>
                 </CardContent>
-                <CardActions sx={{justifyContent: "space-between"}}>
+                <CardActions sx={{justifyContent: "center"}}>
                     <Button
                         size="small"
                         color="info"
@@ -33,7 +33,6 @@ const HostCard = ({host, onEdit, onDelete}) => {
                             size="small"
                             color="warning"
                             startIcon={<EditIcon/>}
-                            sx={{mr: "0.25rem"}}
                             onClick={() => setEditHostDialogOpen(true)}
                         >
                             Edit

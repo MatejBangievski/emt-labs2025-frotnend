@@ -19,7 +19,7 @@ const CountryCard = ({country, onEdit, onDelete}) => {
                     <Typography variant="h5">{country.name}</Typography>
                     <Typography variant="subtitle2">{country.continent}</Typography>
                 </CardContent>
-                <CardActions sx={{justifyContent: "space-between"}}>
+                <CardActions sx={{justifyContent: "center"}}>
                     <Button
                         size="small"
                         color="info"
@@ -33,7 +33,6 @@ const CountryCard = ({country, onEdit, onDelete}) => {
                             size="small"
                             color="warning"
                             startIcon={<EditIcon/>}
-                            sx={{mr: "0.25rem"}}
                             onClick={() => setEditCountryDialogOpen(true)}
                         >
                             Edit
