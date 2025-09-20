@@ -13,8 +13,8 @@ const userRepository = {
         return await axiosInstance.get(`/user/${username}`);
     },
 
-    findStayingAccommodation: async (username) => {
-        return await axiosInstance.get(`/user/findStayingAccommodation/${username}`);
+    findAllBookings: async (username) => {
+        return await axiosInstance.get(`/user/findAllBookings/${username}`);
     },
 
     reserveAccommodation: async (username, accommodationId) => {
@@ -35,6 +35,22 @@ const userRepository = {
 
     bookAllReservations: async (username) => {
         return await axiosInstance.post(`/user/${username}/bookAll`);
+    },
+
+    reserveAllAccommodations: async (username) => {
+        return await axiosInstance.post(`/user/${username}/reserveAll`);
+    },
+
+    completeStay: async (accommodationId) => {
+        return await axiosInstance.get(`/user/completeStay/${accommodationId}`);
+    },
+
+    cancelAllReservations: async (username) => {
+        return await axiosInstance.get(`/user/cancelAllReservations/${username}`);
+    },
+
+    completeAllBookings: async (username) => {
+        return await axiosInstance.get(`/user/completeAllBookings/${username}`);
     },
 
     getAllUsers: async () => {

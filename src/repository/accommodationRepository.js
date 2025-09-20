@@ -4,6 +4,9 @@ const accommodationRepository = {
     findAll: async () => {
         return await axiosInstance.get("/accommodations");
     },
+    findAllNonReserved :async () => {
+        return await axiosInstance.get("/accommodations/findAllNonReserved");
+    },
     findById: async (id) => {
         return await axiosInstance.get(`/accommodations/${id}`);
     },

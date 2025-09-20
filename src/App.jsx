@@ -7,6 +7,7 @@ import Layout from "./ui/components/layout/Layout/Layout.jsx";
 import HomePage from "./ui/pages/HomePage/HomePage.jsx";
 import LoginPage from "./ui/pages/LoginPage/LoginPage.jsx";
 import RegisterPage from "./ui/pages/RegisterPage/RegisterPage.jsx";
+import UsersPage from "./ui/pages/UsersPage/UsersPage.jsx";
 import AccommodationDetails from "./ui/components/accommodations/AccommodationDetails/AccommodationDetails.jsx";
 import HostDetails from "./ui/components/hosts/HostDetails/HostDetails.jsx";
 import CountryDetails from "./ui/components/countries/CountryDetails/CountryDetails.jsx";
@@ -23,6 +24,7 @@ const App = () => {
                         <Route path="accommodations/:id" element={<AccommodationDetails/>}/>
                         <Route path="hosts" element={<HostsPage/>}/>
                         <Route path="hosts/:id" element={<HostDetails/>}/>
+                        <Route path="users" element={<UsersPage/>}/>
                         <Route path="countries" element={<CountriesPage/>}/>
                         <Route path="countries/:id" element={<CountryDetails/>}/>
                         <Route path="/login" element={<LoginPage />} />
