@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, List, ListItemButton, ListItemText } from "@mui/material";
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import accommodationRepository from "../../../../repository/accommodationRepository.js";
 import userRepository from "../../../../repository/userRepository.js";
 
-const ReserveDialog = ({ open, onClose, user }) => {
+const ReserveDialog = ({ open, onClose, user, onUpdated }) => {
     const [accommodations, setAccommodations] = useState([]);
+    const [selectedAcc, setSelectedAcc] = useState("");
 
     useEffect(() => {
         if (open) {
@@ -14,10 +15,11 @@ const ReserveDialog = ({ open, onClose, user }) => {
         }
     }, [open]);
 
-    const handleReserve = (accommodationId) => {
-        userRepository.reserveAccommodation(user.username, accommodationId)
+    const handleConfirm = () => {
+        if (!selectedAcc) return;
+        userRepository.reserveAccommodation(user.username, selectedAcc)
             .then(() => {
-                alert("Accommodation reserved!");
+                onUpdated(); // refresh user data
                 onClose();
             })
             .catch(err => console.error("Error reserving accommodation:", err));
@@ -27,16 +29,18 @@ const ReserveDialog = ({ open, onClose, user }) => {
         <Dialog open={open} onClose={onClose} fullWidth>
             <DialogTitle>Reserve Accommodation for {user?.username}</DialogTitle>
             <DialogContent>
-                <List>
-                    {accommodations.map(acc => (
-                        <ListItemButton key={acc.id} onClick={() => handleReserve(acc.id)}>
-                            <ListItemText primary={acc.name} />
-                        </ListItemButton>
-                    ))}
-                </List>
+                <FormControl fullWidth>
+                    <InputLabel>Select Accommodation</InputLabel>
+                    <Select value={selectedAcc} onChange={e => setSelectedAcc(e.target.value)}>
+                        {accommodations.map(acc => (
+                            <MenuItem key={acc.id} value={acc.id}>{acc.name}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose}>Cancel</Button>
+                <Button variant="contained" color="primary" onClick={handleConfirm}>Reserve</Button>
             </DialogActions>
         </Dialog>
     );

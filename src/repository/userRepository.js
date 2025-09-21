@@ -50,7 +50,7 @@ const userRepository = {
     },
 
     completeAllBookings: async (username) => {
-        return await axiosInstance.get(`/user/completeAllBookings/${username}`);
+        return await axiosInstance.get(`/user/completeStayForAllBookings/${username}`);
     },
 
     getAllUsers: async () => {
